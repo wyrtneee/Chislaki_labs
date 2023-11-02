@@ -87,9 +87,7 @@ void Gauss_method(vector<vector<double>>& matrix,vector<vector<double>>& matrix1
     //result.push_back(x2);
     double x1 = (matrix[m - 3][n - 1] - x2* matrix[m - 3][n - 3]- x3 * (matrix[m - 3][n - 2])) / matrix[m - 3][n - 4];
     //result.push_back(x3);
-      cout<<"zalupa"<<endl;
     cout << x1 << ' ' << x2 << ' ' << x3 << endl;
-      cout<<"xyi"<<endl;
       double x4 = x1* matrix1[m-3][n-4] + x2* matrix1[m-3][n-3] + x3* matrix1[m-3][n-2];
       double x5 = x1* matrix1[m-2][n-4] + x2* matrix1[m-2][n-3] + x3* matrix1[m-2][n-2];
       double x6 = x1* matrix1[m-1][n-4] + x2* matrix1[m-1][n-3] + x3*matrix1[m-1][n-2];
