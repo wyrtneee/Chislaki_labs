@@ -114,7 +114,7 @@ double f31(double x, double y)
 }
 
 
-double simpson_method( double(&f31)(double, double), double a1, double b1, double c1, double d1, int n1, int m1)
+double MetodSimpsona2( double(&f31)(double, double), double a1, double b1, double c1, double d1, int n1, int m1)
 {
     double hx = (b1 - a1) / (2 * n1);
     double hy = (d1 - c1) / (2 * m1);
@@ -144,16 +144,16 @@ double simpson_method( double(&f31)(double, double), double a1, double b1, doubl
     return hx * hy * result / 9;
 }
 
-double calculate_simpson( double a1, double b1, double c1, double d1,  int n1,  int m1)
+double find_sum_simps2( double a1, double b1, double c1, double d1,  int n1,  int m1)
 {
    
     double intg1 = 0;
-    double intg2 = simpson_method( f31,a1, b1, c1, d1, n1, m1);
+    double intg2 = MetodSimpsona2( f31,a1, b1, c1, d1, n1, m1);
 
     while (abs(intg1 - intg2) > 15 * 1e-7) {
         n1 *= 2;
         intg1 = intg2;
-        intg2 = simpson_method( f31,a1, b1, c1, d1, n1, m1);
+        intg2 = MetodSimpsona2( f31,a1, b1, c1, d1, n1, m1);
 
     }
   
