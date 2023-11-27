@@ -36,7 +36,7 @@ int main()
         cout << "Интеграл методом Симсона " << I2 << endl;
 
 
-    I3 = calculate_simpson(a1, b1, c1, d1, n1,m1);
+    I3 = find_sum_simps2(a1, b1, c1, d1, n1,m1);
 
     cout << "Интеграл методом Симпсона2 " <<endl<< I3 << endl;
     
