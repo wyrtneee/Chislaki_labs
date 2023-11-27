@@ -18,7 +18,7 @@ double MetodTrap(double a, double b, double h, int n, double h2, int n2);
 double MetodSimpsona(double a, double b, double h, int n, double h2, int n2);
 double find_sum_simps(double a, double b, double h, int n);
 double find_sum_trap(double a, double b, double h, int n);
-double simpson_method( double(&f31)(double, double), double a1, double b1, double c1, double d1, int n1, int m1);
-double calculate_simpson( double a1, double b1, double c1, double d1,  int n1,  int m1);
+double MetodSimpsona2( double(&f31)(double, double), double a1, double b1, double c1, double d1, int n1, int m1);
+double find_sum_simps2( double a1, double b1, double c1, double d1,  int n1,  int m1);
 double f31(double x, double y);
 
