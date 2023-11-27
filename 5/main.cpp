@@ -7,9 +7,11 @@ using namespace std;
 int main()
 {
     setlocale(LC_ALL, "Russian");
+    srand((unsigned)time(NULL));
 
-    int n1=10;
-    int m1 = n1 / 2;
+    int n1= 2 * (rand() % 100 + 1);
+    int m1 = 2 * (rand() % 100 + 1);
+
    
     int a1 = 0;
     int b1 =2;
@@ -31,7 +33,7 @@ int main()
 
         cout << "Интеграл методом трапеции " << I1 << endl;
 
-        I2 = MetodSimpsona(a, b, h, n, h2, n2);
+        I2 = MetodSimpsona(a, b, h, n);
 
         cout << "Интеграл методом Симсона " << I2 << endl;
 
