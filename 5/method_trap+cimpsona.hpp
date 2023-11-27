@@ -13,12 +13,12 @@
 #endif /* method_trap_cimpsona_hpp */
 
 
-double F(double x);
-double FindMetodTrap(double a, double b, double h, int n, double h2, int n2);
-double FindMetodSimpsona(double a, double b, double h, int n, double h2, int n2);
-double FindSumSimps(double a, double b, double h, int n);
-double FindSumTrap(double a, double b, double h, int n);
-double FindMetodSimpsona2( double(&f31)(double, double), double a1, double b1, double c1, double d1, int n1, int m1);
-double FindSumSimps2( double a1, double b1, double c1, double d1,  int n1,  int m1);
-double F31(double x, double y);
+double f(double x);
+double MetodTrap(double a, double b, double h, int n, double h2, int n2);
+double MetodSimpsona(double a, double b, double h, int n);
+double find_sum_simps(double a, double b, double h, int n);
+double find_sum_trap(double a, double b, double h, int n);
+double MetodSimpsona2( double(&f31)(double, double), double a1, double b1, double c1, double d1, int n1, int m1);
+double find_sum_simps2( double a1, double b1, double c1, double d1,  int n1,  int m1);
+double f31(double x, double y);
 
