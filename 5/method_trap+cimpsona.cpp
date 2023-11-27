@@ -18,13 +18,13 @@
 #include <cmath>
 
 using namespace std;
-double MetodSimpsona(double a, double b, double h, int n)
+double FindMetodSimpsona(double a, double b, double h, int n)
 {
     double sum; double sum2;
 
     do {
-        sum = find_sum_simps(a, b, h, n);
-        sum2 = find_sum_simps(a, b, h / 2, 2 * n);
+        sum = FindSumSimps(a, b, h, n);
+        sum2 = FindSumSimps(a, b, h / 2, 2 * n);
         n = n * 2;
         h = (b - a) / n;
        
@@ -35,15 +35,15 @@ double MetodSimpsona(double a, double b, double h, int n)
     return sum2;
 }
 
-double MetodTrap(double a, double b, double h, int n, double h2, int n2)
+double FindMetodTrap(double a, double b, double h, int n, double h2, int n2)
 {
     double sum;
     double sum2;
 
     do
     {
-        sum = find_sum_trap(a, b, h,n);
-        sum2 = find_sum_trap(a, b, h2, n2);
+        sum = FindSumTrap(a, b, h,n);
+        sum2 = FindSumTrap(a, b, h2, n2);
 
         n = n * 2;
         n2 = n2 * 2;
@@ -58,21 +58,21 @@ double MetodTrap(double a, double b, double h, int n, double h2, int n2)
     return sum;
 }
 
-double f(double x)
+double F(double x)
 {
     return sqrt(x + pow(x, 3));
 }
-double find_sum_simps(double a, double b,double h,int n)
+double FindSumSimps(double a, double b,double h,int n)
 {
     double sum;
-    sum = f(a);
+    sum = F(a);
     double x = a;
     x = x + h;
 
 
     for (int i = 0; i < (n / 2); i++)
     {
-        sum = sum + (4 * f(x));
+        sum = sum + (4 * F(x));
         x = x + 2 * h;
     }
 
@@ -80,40 +80,40 @@ double find_sum_simps(double a, double b,double h,int n)
 
     for (int i = 0; i < (n / 2) - 1; i++)
     {
-        sum = sum + (2 * f(x));
+        sum = sum + (2 * F(x));
         x = x + 2 * h;
     }
 
-    sum = sum + f(b);
+    sum = sum + F(b);
     sum = sum * h / 3;
     return sum;
 }
-double find_sum_trap(double a, double b, double h, int n)
+double FindSumTrap(double a, double b, double h, int n)
 {
     double x = a;
-    double sum = f(x);
+    double sum = F(x);
     x = x + h;
 
 
     for (int i = 0; i < n - 1; i++)
     {
-        sum = sum + 2 * f(x);
+        sum = sum + 2 * F(x);
         x = x + h;
     }
-    sum = sum + f(x);
+    sum = sum + F(x);
     sum = (h * sum) / 2;
     return sum;
 
 }
 
 
-double f31(double x, double y)
+double F31(double x, double y)
 {
     return pow(x,2)+2*y;
 }
 
 
-double MetodSimpsona2( double(&f31)(double, double), double a1, double b1, double c1, double d1, int n1, int m1)
+double FindMetodSimpsona2( double(&F31)(double, double), double a1, double b1, double c1, double d1, int n1, int m1)
 {
     double hx = (b1 - a1) / (2 * n1);
     double hy = (d1 - c1) / (2 * m1);
@@ -121,33 +121,33 @@ double MetodSimpsona2( double(&f31)(double, double), double a1, double b1, doubl
     for (int i = 0; i <= n1 - 1; ++i) {
         for (int j = 0; j <= m1 - 1; ++j)
         {
-            result += f31(a1 + (i * 2) * hx, c1 + (j * 2) * hy);
+            result += F31(a1 + (i * 2) * hx, c1 + (j * 2) * hy);
             
-            result += 4 * f31(a1 + (i * 2 + 1) * hx, c1 + (j * 2) * hy);
+            result += 4 * F31(a1 + (i * 2 + 1) * hx, c1 + (j * 2) * hy);
             
-            result +=f31(a1 + (i * 2 + 2) * hx,c1 + (j * 2) * hy);
+            result +=F31(a1 + (i * 2 + 2) * hx,c1 + (j * 2) * hy);
             
-            result += 4 * f31(a1 + (i * 2) * hx, c1 + (j * 2 + 1) * hy);
+            result += 4 * F31(a1 + (i * 2) * hx, c1 + (j * 2 + 1) * hy);
             
-            result += 16 *f31(a1 + (i * 2 + 1) * hx, c1 + (j * 2 + 1) * hy);
+            result += 16 *F31(a1 + (i * 2 + 1) * hx, c1 + (j * 2 + 1) * hy);
             
-            result += 4 * f31(a1 + (i * 2 + 2) * hx, c1 + (j * 2 + 1) * hy);
+            result += 4 * F31(a1 + (i * 2 + 2) * hx, c1 + (j * 2 + 1) * hy);
             
-            result += f31(a1 + (i * 2) * hx,c1 + (j * 2 + 2) * hy);
+            result += F31(a1 + (i * 2) * hx,c1 + (j * 2 + 2) * hy);
             
-            result += 4 * f31(a1 + (i * 2 + 1) * hx, c1 + (j * 2 + 2) * hy);
+            result += 4 * F31(a1 + (i * 2 + 1) * hx, c1 + (j * 2 + 2) * hy);
             
-            result += f31(a1 + (i * 2 + 2) * hx, c1 + (j * 2 + 2) * hy);
+            result += F31(a1 + (i * 2 + 2) * hx, c1 + (j * 2 + 2) * hy);
         }
     }
     return hx * hy * result / 9;
 }
 
-double find_sum_simps2( double a1, double b1, double c1, double d1,  int n1,  int m1)
+double FindSumSimps2( double a1, double b1, double c1, double d1,  int n1,  int m1)
 {
    
  
-    double intg2 = MetodSimpsona2( f31,a1, b1, c1, d1, n1, m1);
+    double intg2 = FindMetodSimpsona2( F31,a1, b1, c1, d1, n1, m1);
     return intg2;
 }
 
