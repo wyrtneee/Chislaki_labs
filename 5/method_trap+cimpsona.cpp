@@ -18,22 +18,21 @@
 #include <cmath>
 
 using namespace std;
-double MetodSimpsona(double a, double b, double h, int n, double h2, int n2)
+double MetodSimpsona(double a, double b, double h, int n)
 {
     double sum; double sum2;
 
     do {
         sum = find_sum_simps(a, b, h, n);
-        sum2 = find_sum_simps(a, b, h2, n2);
+        sum2 = find_sum_simps(a, b, h / 2, 2 * n);
         n = n * 2;
-        n2 = n * 2;
         h = (b - a) / n;
-        h2 = h / 2;
+       
 
     } while (abs(sum2 - sum) / 15 > 1e-7);
     cout << n << endl;
 
-    return sum;
+    return sum2;
 }
 
 double MetodTrap(double a, double b, double h, int n, double h2, int n2)
@@ -147,16 +146,8 @@ double MetodSimpsona2( double(&f31)(double, double), double a1, double b1, doubl
 double find_sum_simps2( double a1, double b1, double c1, double d1,  int n1,  int m1)
 {
    
-    double intg1 = 0;
+ 
     double intg2 = MetodSimpsona2( f31,a1, b1, c1, d1, n1, m1);
-
-    while (abs(intg1 - intg2) > 15 * 1e-7) {
-        n1 *= 2;
-        intg1 = intg2;
-        intg2 = MetodSimpsona2( f31,a1, b1, c1, d1, n1, m1);
-
-    }
-  
     return intg2;
 }
 
