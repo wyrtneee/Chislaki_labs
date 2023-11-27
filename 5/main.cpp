@@ -29,16 +29,16 @@ int main()
         double I2;
 
 
-        I1 = MetodTrap(a, b, h, n, h2, n2);
+        I1 = FindMetodTrap(a, b, h, n, h2, n2);
 
         cout << "Интеграл методом трапеции " << I1 << endl;
 
-        I2 = MetodSimpsona(a, b, h, n);
+        I2 = FindMetodSimpsona(a, b, h, n);
 
         cout << "Интеграл методом Симсона " << I2 << endl;
 
 
-    I3 = find_sum_simps2(a1, b1, c1, d1, n1,m1);
+    I3 = FindSumSimps2(a1, b1, c1, d1, n1,m1);
 
     cout << "Интеграл методом Симпсона2 " <<endl<< I3 << endl;
     
